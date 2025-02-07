@@ -1,19 +1,23 @@
-/.phpunit.cache
+# Dependencias de Node.js
 /node_modules
-/public/build
-/public/hot
-/public/storage
-/storage/*.key
-/vendor
+
+# Caché de Vite (no necesaria en el repositorio)
+/.vite
+/.vitepress
+
+# Logs y archivos de depuración
+*.log
+npm-debug.log*
+yarn-debug.log*
+pnpm-debug.log*
+lerna-debug.log*
+
+# Variables de entorno
 .env
-.env.backup
-.env.production
-.phpunit.result.cache
-Homestead.json
-Homestead.yaml
-auth.json
-npm-debug.log
-yarn-error.log
+.env.*
+!.env.example  # Mantén el archivo de ejemplo en el repositorio
+
+# Configuración del IDE
 /.fleet
 /.idea
 /.vscode

@@ -7,13 +7,7 @@
         <x-validation-errors class="mb-4" />
 
         <form method="POST" action="{{ route('register') }}">
-            @csrf
-
-            <div>
-                <x-label for="name" value="{{ __('Name') }}" />
-                <x-input id="name" class="block mt-1 w-full" type="text" name="name" :value="old('name')" required autofocus autocomplete="name" />
-            </div>
-
+            @csrf         
             <div class="mt-4">
                 <x-label for="email" value="{{ __('Email') }}" />
                 <x-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')" required autocomplete="username" />
@@ -28,6 +22,56 @@
                 <x-label for="password_confirmation" value="{{ __('Confirm Password') }}" />
                 <x-input id="password_confirmation" class="block mt-1 w-full" type="password" name="password_confirmation" required autocomplete="new-password" />
             </div>
+
+            <div>
+                <x-label for="nombre" value="{{ __('Nombre') }}" />
+                <x-input id="nombre" class="block mt-1 w-full" type="text" name="nombre" :value="old('nombre')" required autofocus autocomplete="nombre" />
+            </div>
+
+            <div class="mt-4">
+                <x-label for="apellidopaterno" value="{{ __('Apellido Paterno') }}" />
+                <x-input id="apellidopaterno" class="block mt-1 w-full" type="text" name="apellidopaterno" :value="old('apellidopaterno')" required autofocus autocomplete="apellidopaterno" />
+            </div>
+
+            <!-- Este es otro input no perteneciente a jetstream-->
+            <div class="mt-4">
+                <x-label for="apellidomaterno" value="{{ __('Apellido Materno') }}" />
+                <x-input id="apellidomaterno" class="block mt-1 w-full" type="text" name="apellidomaterno" :value="old('apellidomaterno')" required autofocus autocomplete="apellidomaterno" />
+            </div>
+
+            <!-- Este es otro input no perteneciente a jetstream-->
+            <div class="mt-4">
+                <x-label for="ci" value="{{ __('CI') }}" />
+                <x-input id="ci" class="block mt-1 w-full" type="text" name="ci" :value="old('ci')" required autofocus autocomplete="ci" />
+            </div>
+
+            <div class="mt-4">
+                <x-label for="sexo" value="{{ __('Sexo') }}" />
+                <select id="sexo" name="sexo" class="block w-full mt-1 border-gray-300 rounded-md shadow-sm focus:border-indigo-500 focus:ring focus:ring-indigo-500 focus:ring-opacity-50">
+                    <option value="Masculino">Masculino</option>
+                    <option value="Femenino">Femenino</option>
+                </select>
+            </div>
+
+            <!-- Este es otro input no perteneciente a jetstream-->
+            <div class="mt-4">
+                <x-label for="telefono" value="{{ __('Telefono') }}" />
+                <x-input id="telefono" class="block mt-1 w-full" type="text" name="telefono" :value="old('telefono')" required autofocus autocomplete="telefono" />
+            </div>
+
+            <!-- Este es otro input no perteneciente a jetstream-->
+            <div class="mt-4">
+                <x-label for="direccion" value="{{ __('Direccion') }}" />
+                <x-input id="direccion" class="block mt-1 w-full" type="text" name="direccion" :value="old('direccion')" required autofocus autocomplete="direccion" />
+            </div>
+            
+            
+
+            <div class="mt-4">
+                <x-label for="nit" value="{{ __('NIT') }}" />
+                <x-input id="nit" class="block mt-1 w-full" type="text" name="nit" :value="old('nit')" required autofocus autocomplete="nit" />
+            </div>
+            
 
             @if (Laravel\Jetstream\Jetstream::hasTermsAndPrivacyPolicyFeature())
                 <div class="mt-4">
