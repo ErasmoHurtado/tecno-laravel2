@@ -121,18 +121,10 @@
                             <x-danger-button wire:click="destroy({{ $ficha->id }})">Eliminar</x-danger-button>
                         @endcan
                         @if($ficha->estado === 'Pendiente de Pago')
-                        {{-- @can('Pagar una Ficha') --}}
+                        @can('Pagar una Ficha')
                             <x-button wire:click="pagarFicha({{ $ficha->id }})">Pagar Ficha</x-button>
-                        {{-- @endcan --}}
-                        @endif
-                        {{-- @if($ficha->estado === 'Pagado en espera de atencion')
-                            @can('Puede atender una ficha medica')
-                                <x-button wire:click="atenderFicha({{ $ficha->id }})">Atender Ficha</x-button>
-                            @endcan
-                        @endif
-                        @can('Puede ver el historial clinico de un paciente')
-                            <x-button wire:click="verHistorialClinico({{ $ficha->paciente->id }})">Ver Historial Clínico del Paciente</x-button>
-                        @endcan --}}
+                        @endcan
+                        @endif                        
                     </div>
                 </li>
             @endforeach

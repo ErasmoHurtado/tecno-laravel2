@@ -36,25 +36,37 @@
     
 
     @can('Ver Lista de Salas')
-        <div class="bg-white dark:bg-gray-800 shadow rounded-lg p-6">
-            <ul class="list-disc list-inside space-y-2">
+    <div class="bg-white dark:bg-gray-800 shadow rounded-lg p-6">
+        <h2 class="text-xl font-semibold text-gray-800 dark:text-gray-200 mb-4 text-center">Lista de Salas</h2>
+
+        <table class="w-full border-collapse border border-gray-300 dark:border-gray-600">
+            <thead>
+                <tr class="bg-gray-200 dark:bg-gray-700">
+                    <th class="p-2 border border-gray-300 dark:border-gray-600 text-center">Código</th>
+                    <th class="p-2 border border-gray-300 dark:border-gray-600 text-center">Tipo</th>
+                    <th class="p-2 border border-gray-300 dark:border-gray-600 text-center">Acciones</th>
+                </tr>
+            </thead>
+            <tbody>
                 @foreach ($salas as $sala)
-                    <li class="font-semibold text-sm dark:text-gray-200 leading-tight mb-3 flex justify-between"
-                        wire:key="sala--{{ $sala->id }}">
-                        {{ $sala->codigo }} - {{ $sala->tipo }}
-                        <div>
+                    <tr class="border border-gray-300 dark:border-gray-600">
+                        <td class="p-2 text-center align-middle">{{ $sala->codigo }}</td>
+                        <td class="p-2 text-center align-middle">{{ $sala->tipo }}</td>
+                        <td class="p-2 text-center align-middle">
                             @can('Editar una Sala')
-                            <x-button wire:click="edit({{ $sala->id }})">Editar</x-button>
+                                <x-button wire:click="edit({{ $sala->id }})">Editar</x-button>
                             @endcan
                             @can('Eliminar una Sala')
-                            <x-danger-button wire:click="destroy({{ $sala->id }})">Eliminar</x-danger-button>
+                                <x-danger-button wire:click="destroy({{ $sala->id }})">Eliminar</x-danger-button>
                             @endcan
-                        </div>
-                    </li>
+                        </td>
+                    </tr>
                 @endforeach
-            </ul>
-        </div>
+            </tbody>
+        </table>
+    </div>
     @endcan
+
     
 
     <form wire:submit="update">

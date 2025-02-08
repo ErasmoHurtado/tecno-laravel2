@@ -21,3 +21,7 @@ lerna-debug.log*
 /.fleet
 /.idea
 /.vscode
+
+# Cambios para el vendor y composer
+/.vendor
+composer.lock

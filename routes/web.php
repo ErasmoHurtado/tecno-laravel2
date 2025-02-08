@@ -30,41 +30,17 @@ Route::middleware([
 
     Route::get('/rol', function () {
         return view('view-formulario-rol');
-    })->name('formulario.roles');    
-
-    Route::get('/cliente', function () {
-        return view('view-formulario-cliente');
-    })->name('formulario.clientes');
+    })->name('formulario.roles');       
     
-    Route::get('/proveedor', function () {
-        return view('view-formulario-proveedor');
-    })->name('formulario.proveedores');
     
     Route::get('/personal', function () {
         return view('view-formulario-personal');
     })->name('formulario.personal');
-
-    Route::get('/categoria-insumo', function () {
-        return view('view-formulario-categoria-insumo');
-    })->name('formulario.categoria.insumos');
-
-    Route::get('/insumo', function () {
-        return view('view-formulario-insumo');
-    })->name('formulario.insumos');
-
-    Route::get('/movimiento', function () {
-        return view('view-formulario-movimiento');
-    })->name('formulario.movimientos');
-
     
-    
-    Route::get('/cotizacion', function () {
-        return view('view-formulario-cotizacion');
-    })->name('formulario.cotizacions');
 
-    Route::get('/pago', function () {
-        return view('view-formulario-pago');
-    })->name('formulario.pagos');
+    // Route::get('/pago', function () {
+    //     return view('view-formulario-pago');
+    // })->name('formulario.pagos');
     
     Route::get('/especialidad', function () {
         return view('view-formulario-especialidad');

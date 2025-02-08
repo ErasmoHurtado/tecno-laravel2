@@ -111,61 +111,7 @@ class PermissionsSeeder extends Seeder
         $user->assignRole($roleAdmin);
 
 
-        //CREACION DE UN CLIENTE
-        $personaCreated1 = Persona::create([                 
-            'ci' => "9710072",
-            'nombre' => "Erik",
-            'apellidopaterno' => "Hurtado",
-            'apellidomaterno' => "Gutierrez",
-            'sexo' => "Masculino",
-            'telefono' => "68574589",
-            'direccion' => "C/ Los mangales 6to Anillo Av/Alemena",
-            
-        ]);
-
-        $user1 = \App\Models\User::factory()->create([
-            'email' => 'erik@test.com',
-            'password' => Hash::make('12345678'), 
-            'person_id' => $personaCreated1->id           
-        ]);
-
-        $cliente = \App\Models\Cliente::create([
-            'nit' => '21245122115',
-            'person_id' => $personaCreated1->id           
-        ]);
-
-        //$user->removeRole('Cliente');        
-        $user1->assignRole($roleCliente);
-
         
-        //CREACION DE UN PROVEEDOR
-        $personaCreated2 = Persona::create([                 
-            'ci' => "9898983",
-            'nombre' => "Fidel",
-            'apellidopaterno' => "Rada",
-            'apellidomaterno' => "Rojas",
-            'sexo' => "Masculino",
-            'telefono' => "67865123",
-            'direccion' => "C/ Los Virgen de Lujan 6to Anillo",
-            
-        ]);
-
-        $user2 = \App\Models\User::factory()->create([
-            'email' => 'fidel@test.com',
-            'password' => Hash::make('12345678'), 
-            'person_id' => $personaCreated2->id           
-        ]);
-
-        $proveedor = \App\Models\Proveedor::create([
-            'nombreempresa' => 'Colorful SA',
-            'cargoempresa' => 'Proveedor #21',
-            'telefonoreferencia' => '76389234',
-
-            'person_id' => $personaCreated2->id           
-        ]);
-
-        //$user->removeRole('Cliente');        
-        $user2->assignRole($roleProveedor);
 
         //CREACION DE UN PERSONAL = Gerente
         $personaCreated3 = Persona::create([                 
@@ -306,70 +252,54 @@ class PermissionsSeeder extends Seeder
         //$user->removeRole('Cliente');        
         $user7->assignRole($rolePaciente);
 
-        
-
-        
-
-        
-
-        
-
-
-        //Lista de Permisos:
 
         //Acceso a pestañas
         
         //Gestion de Usuarios
         Permission::create(['name' => 'Visualizar pestaña de Gestion de Usuarios']);
-        Permission::create(['name' => 'Visualizar pestaña de Gestion de Clientes']);
-        Permission::create(['name' => 'Visualizar pestaña de Gestion de Proveedores']);
         Permission::create(['name' => 'Visualizar pestaña de Gestion de Personal']);
         Permission::create(['name' => 'Visualizar pestaña de Gestion de Roles']);        
 
         Permission::create(['name' => 'Visualizar pestaña de Gestion de Medicos']);
         Permission::create(['name' => 'Visualizar pestaña de Gestion de Pacientes']);
-        Permission::create(['name' => 'Visualizar pestaña de Gestion de Recepcionistas']);
+        Permission::create(['name' => 'Visualizar pestaña de Gestion de Recepcionistas']);                
 
-        //Gestion de Insumos
-        Permission::create(['name' => 'Ver pestaña de Gestion de Insumos']);
-        Permission::create(['name' => 'Ver pestaña de Categoria de Insumos']);
-        Permission::create(['name' => 'Ver pestaña de Insumos']);
-
-        //Gestion de Inventarios
-        Permission::create(['name' => 'Ver pestaña de Gestion de Inventarios']);
-        Permission::create(['name' => 'Ver pestaña de Movimientos']);
-
-        //Gestion de Pedidos
-        Permission::create(['name' => 'Ver pestaña de Gestion de Pedidos']);
-        Permission::create(['name' => 'Ver pestaña de Mis Pedidos']);
-        Permission::create(['name' => 'Ver pestaña de Cotizaciones']);
-
-        //Gestion de Servicios Medicos
+        //Gestion de Atencion Medica
         Permission::create(['name' => 'Visualizar pestaña de Atencion Medica']);
 
-        //Especialidades
+        //Pestanas de atencion medica
         Permission::create(['name' => 'Ver pestaña de Especialidades']);
         Permission::create(['name' => 'Ver pestaña de Salas']);
         Permission::create(['name' => 'Ver pestaña de asignacion de especialidades medicas']);
         Permission::create(['name' => 'Ver pestaña de turnos de atencion']);
 
-        //Gestion de Atencion Medica
-        Permission::create(['name' => 'Ver pestaña de Consulta Medica']);
+        //Gestion de Consulta Medica
+        Permission::create(['name' => 'Visualizar pestaña de Consulta Medica']);
 
-        //Fichas
+        //Pestanas de Consulta Medica
         Permission::create(['name' => 'Ver pestaña de Fichas']);
+        Permission::create(['name' => 'Ver pestaña de Consulta Medica']);
+        Permission::create(['name' => 'Ver pestaña de Historias Clinicas']);
         
-        /*
+        //Ver Consultas Realizadas
+        Permission::create(['name' => 'Visualizar pestaña de Consultas Realizadas']);
+
+        //Pestanas de Consultas Realizadas
+        Permission::create(['name' => 'Ver pestaña de Consultas Medicas Realizadas']);
+
         //Gestion de Pagos
-        Permission::create(['name' => 'Ver pestaña de Gestion de Pagos']);
-        Permission::create(['name' => 'Ver pestaña de Pedidos Pagados']);
-        */
+        Permission::create(['name' => 'Visualizar pestaña de Pagos']);
+
+        //Pestanas de Gestion de Pagos
+        Permission::create(['name' => 'Ver pestaña de Pagos']);    
+
+
+        
         
         //Usuarios->Cliente, Proveedor, Personal, Roles----------------------------------------------------
         
-        //Listar
-        Permission::create(['name' => 'Ver Lista de Clientes']);
-        Permission::create(['name' => 'Ver Lista de Proveedores']);
+        //Listar      
+        
         Permission::create(['name' => 'Ver Lista de Personal']);
         Permission::create(['name' => 'Ver Lista de Roles']);
         Permission::create(['name' => 'Ver Lista de Permisos del Rol']);
@@ -377,18 +307,14 @@ class PermissionsSeeder extends Seeder
         Permission::create(['name' => 'Ver Lista de Pacientes']); 
         Permission::create(['name' => 'Ver Lista de Recepcionistas']); 
 
-        //Anadir
-        Permission::create(['name' => 'Añadir un Nuevo Cliente']);        
-        Permission::create(['name' => 'Añadir un Nuevo Proveedor']);
+        //Anadir        
         Permission::create(['name' => 'Añadir un Nuevo Personal']);
         Permission::create(['name' => 'Añadir un Nuevo Rol y sus Permisos']);
         Permission::create(['name' => 'Añadir un Nuevo Médico']);        
         Permission::create(['name' => 'Añadir un Nuevo Paciente']);        
         Permission::create(['name' => 'Añadir un Nuevo Recepcionista']);        
 
-        //Editar
-        Permission::create(['name' => 'Editar Cliente']);
-        Permission::create(['name' => 'Editar Proveedor']);
+        //Editar        
         Permission::create(['name' => 'Editar Personal']);
         Permission::create(['name' => 'Editar Rol y sus Permisos']);
         Permission::create(['name' => 'Editar Médico']);
@@ -396,78 +322,13 @@ class PermissionsSeeder extends Seeder
         Permission::create(['name' => 'Editar Recepcionista']);
 
         
-        //Eliminar
-        Permission::create(['name' => 'Eliminar Cliente']);
-        Permission::create(['name' => 'Eliminar Proveedor']);
+        //Eliminar        
         Permission::create(['name' => 'Eliminar Personal']);
         Permission::create(['name' => 'Eliminar Rol y sus Permisos']);
         Permission::create(['name' => 'Eliminar Médico']);
         Permission::create(['name' => 'Eliminar Paciente']);
-        Permission::create(['name' => 'Eliminar Recepcionista']);
+        Permission::create(['name' => 'Eliminar Recepcionista']);       
         
-        
-        //Insumos->Categoria de Insumos, Insumos----------------------------------------------------------
-
-        //Listar
-        Permission::create(['name' => 'Ver Lista de Categorias de Insumos']);
-        Permission::create(['name' => 'Ver Lista de Insumos']);
-
-        //Anadir
-        Permission::create(['name' => 'Añadir una Nueva Categoria de Insumo']);
-        Permission::create(['name' => 'Añadir un Nuevo Insumo']);
-
-        //Editar    
-        Permission::create(['name' => 'Editar una Categoria de Insumo']);
-        Permission::create(['name' => 'Editar un Insumo']);
-
-        //Eliminar
-        Permission::create(['name' => 'Eliminar una Categoria de Insumo']);
-        Permission::create(['name' => 'Eliminar un Insumo']);
-
-        //Inventarios->Movimientos-----------------------------------------------------------------
-
-        //Listar
-        Permission::create(['name' => 'Ver Lista de movimientos']);
-        Permission::create(['name' => 'Ver Informacion del movimiento']);        
-        
-        //Anadir
-        Permission::create(['name' => 'Añadir un Nuevo Movimiento']);
-        
-        //Conseguir
-        Permission::create(['name' => 'Ver informacion de un Movimiento']);
-
-        //Pedidos-> Mis Pedidos, Cotizaciones------------------------------------------------------
-        //Listar
-        Permission::create(['name' => 'Ver Lista de Pedidos']);
-        Permission::create(['name' => 'Ver Lista de Cotizaciones']);
-
-        //Anadir
-        Permission::create(['name' => 'Añadir un Nuevo Pedido']);
-        Permission::create(['name' => 'Añadir una Nueva Cotizacion']);
-
-        //Eliminar
-        Permission::create(['name' => 'Eliminar un Pedido']);
-
-        //Solicitar Cotizacion(Ver Detalle Pedido)
-        Permission::create(['name' => 'Solicitar una cotizacion para un pedido']);
-        
-        //Enviar una Cotizacion
-        Permission::create(['name' => 'Enviar una cotizacion de un pedido al cliente']);
-
-        //Ver cotizacion de un pedido
-        Permission::create(['name' => 'Ver cotizacion recibida']);
-        
-        /*
-        //Pagos ->TBD<-
-        Permission::create(['name' => 'ver lista de metodos de pago']);
-        Permission::create(['name' => 'añadir un nuevo metodo de pago']);
-        Permission::create(['name' => 'editar un metodo de pago']);
-        Permission::create(['name' => 'eliminar un metodo de pago']);        
-
-
-        //Reportes y Estadisticas ->TBD<-
-
-        */
 
         //Servicios Medicos
         
@@ -512,51 +373,40 @@ class PermissionsSeeder extends Seeder
         //Editar    
         Permission::create(['name' => 'Editar un Turno de Atencion']);
         //Eliminar
-        Permission::create(['name' => 'Eliminar un Turno de Atencion']);  
+        Permission::create(['name' => 'Eliminar un Turno de Atencion']); 
 
+        // Consulta Medica
 
+        //Fichas
+        //Listar
+        Permission::create(['name' => 'Ver Lista de Fichas']);
+        //Añadir
+        Permission::create(['name' => 'Añadir una Nueva Ficha']);
+        //Editar    
+        Permission::create(['name' => 'Editar una Ficha']);
+        //Eliminar
+        Permission::create(['name' => 'Eliminar una Ficha']); 
+
+        //Pagar una Ficha
+        Permission::create(['name' => 'Pagar una Ficha']); 
+        //Atender una Ficha
+        Permission::create(['name' => 'Puede atender una ficha medica']); 
+        //Ver el historial clinico de un paciente
+        Permission::create(['name' => 'Puede ver el historial clinico de un paciente']);         
         
-        //Roles Asignados al Cliente
-
-        $roleCliente->givePermissionTo('Ver pestaña de Gestion de Pedidos'); 
-        $roleCliente->givePermissionTo('Ver pestaña de Mis Pedidos'); 
-        $roleCliente->givePermissionTo('Ver Lista de Pedidos'); 
-        $roleCliente->givePermissionTo('Añadir un Nuevo Pedido'); 
-        $roleCliente->givePermissionTo('Eliminar un Pedido'); 
-        $roleCliente->givePermissionTo('Solicitar una cotizacion para un pedido'); 
-        $roleCliente->givePermissionTo('Ver cotizacion recibida'); 
         
-        
-
-        
-
-
-        //Roles Asignados al Proveedor
-
-        $roleProveedor->givePermissionTo('Ver pestaña de Gestion de Inventarios'); 
 
         //Roles Asignados al Gerente
 
-        $roleGerente->givePermissionTo('Visualizar pestaña de Gestion de Usuarios');
-        $roleGerente->givePermissionTo('Visualizar pestaña de Gestion de Clientes'); 
-        $roleGerente->givePermissionTo('Visualizar pestaña de Gestion de Proveedores'); 
+        $roleGerente->givePermissionTo('Visualizar pestaña de Gestion de Usuarios');        
         $roleGerente->givePermissionTo('Visualizar pestaña de Gestion de Personal'); 
-        $roleGerente->givePermissionTo('Visualizar pestaña de Gestion de Roles');         
+        $roleGerente->givePermissionTo('Visualizar pestaña de Gestion de Roles'); 
+
         $roleGerente->givePermissionTo('Visualizar pestaña de Gestion de Medicos'); 
         $roleGerente->givePermissionTo('Visualizar pestaña de Gestion de Pacientes'); 
         $roleGerente->givePermissionTo('Visualizar pestaña de Gestion de Recepcionistas'); 
 
-        $roleGerente->givePermissionTo('Ver pestaña de Gestion de Insumos'); 
-        $roleGerente->givePermissionTo('Ver pestaña de Categoria de Insumos'); 
-        $roleGerente->givePermissionTo('Ver pestaña de Insumos'); 
-        $roleGerente->givePermissionTo('Ver pestaña de Gestion de Inventarios'); 
-        $roleGerente->givePermissionTo('Ver pestaña de Movimientos'); 
-        $roleGerente->givePermissionTo('Ver pestaña de Gestion de Pedidos'); 
-        $roleGerente->givePermissionTo('Ver pestaña de Mis Pedidos'); 
-        $roleGerente->givePermissionTo('Ver pestaña de Cotizaciones'); 
-
-        $roleGerente->givePermissionTo('Ver Lista de Clientes');
-        $roleGerente->givePermissionTo('Ver Lista de Proveedores');
+        
         $roleGerente->givePermissionTo('Ver Lista de Personal');
         $roleGerente->givePermissionTo('Ver Lista de Roles');
         $roleGerente->givePermissionTo('Ver Lista de Permisos del Rol');
@@ -564,18 +414,14 @@ class PermissionsSeeder extends Seeder
         $roleGerente->givePermissionTo('Ver Lista de Pacientes');
         $roleGerente->givePermissionTo('Ver Lista de Recepcionistas');
         
-
-        $roleGerente->givePermissionTo('Añadir un Nuevo Cliente');
-        $roleGerente->givePermissionTo('Añadir un Nuevo Proveedor');
+        
         $roleGerente->givePermissionTo('Añadir un Nuevo Personal');
         $roleGerente->givePermissionTo('Añadir un Nuevo Rol y sus Permisos');
         $roleGerente->givePermissionTo('Añadir un Nuevo Médico');
         $roleGerente->givePermissionTo('Añadir un Nuevo Paciente');
         $roleGerente->givePermissionTo('Añadir un Nuevo Recepcionista');
 
-
-        $roleGerente->givePermissionTo('Editar Cliente');
-        $roleGerente->givePermissionTo('Editar Proveedor');
+        
         $roleGerente->givePermissionTo('Editar Personal');
         $roleGerente->givePermissionTo('Editar Rol y sus Permisos');
         $roleGerente->givePermissionTo('Editar Médico');
@@ -583,49 +429,16 @@ class PermissionsSeeder extends Seeder
         $roleGerente->givePermissionTo('Editar Recepcionista');
 
 
-        $roleGerente->givePermissionTo('Eliminar Cliente');
-        $roleGerente->givePermissionTo('Eliminar Proveedor');
         $roleGerente->givePermissionTo('Eliminar Personal');
         $roleGerente->givePermissionTo('Eliminar Rol y sus Permisos');
         $roleGerente->givePermissionTo('Eliminar Médico');
         $roleGerente->givePermissionTo('Eliminar Paciente');
         $roleGerente->givePermissionTo('Eliminar Recepcionista');
 
-        $roleGerente->givePermissionTo('Ver Lista de Categorias de Insumos');
-        $roleGerente->givePermissionTo('Ver Lista de Insumos');
-
-        $roleGerente->givePermissionTo('Añadir una Nueva Categoria de Insumo');
-        $roleGerente->givePermissionTo('Añadir un Nuevo Insumo');
-
-        $roleGerente->givePermissionTo('Editar una Categoria de Insumo');
-        $roleGerente->givePermissionTo('Editar un Insumo');
-
-        $roleGerente->givePermissionTo('Ver Lista de movimientos');
-        $roleGerente->givePermissionTo('Ver Informacion del movimiento');
-
-        
-
-        $roleGerente->givePermissionTo('Añadir un Nuevo Movimiento');
-
-        
-
-        $roleGerente->givePermissionTo('Ver Lista de Pedidos');
-        $roleGerente->givePermissionTo('Ver Lista de Cotizaciones');
-
-        $roleGerente->givePermissionTo('Añadir un Nuevo Pedido');
-        $roleGerente->givePermissionTo('Añadir una Nueva Cotizacion');
-
-        $roleGerente->givePermissionTo('Eliminar un Pedido');
-
-        $roleGerente->givePermissionTo('Solicitar una cotizacion para un pedido');
-
-        $roleGerente->givePermissionTo('Enviar una cotizacion de un pedido al cliente');
-
-        $roleGerente->givePermissionTo('Ver cotizacion recibida');
-
-        
+           
         
         $roleGerente->givePermissionTo('Visualizar pestaña de Atencion Medica');
+        
         $roleGerente->givePermissionTo('Ver pestaña de Especialidades');
         $roleGerente->givePermissionTo('Ver pestaña de Salas');
         $roleGerente->givePermissionTo('Ver pestaña de asignacion de especialidades medicas');
@@ -657,107 +470,104 @@ class PermissionsSeeder extends Seeder
 
         //Consulta Medica
 
-        $roleGerente->givePermissionTo('Ver pestaña de Consulta Medica');
+        $roleGerente->givePermissionTo('Visualizar pestaña de Consulta Medica');
+
         $roleGerente->givePermissionTo('Ver pestaña de Fichas');
+        $roleGerente->givePermissionTo('Ver pestaña de Consulta Medica');
+        $roleGerente->givePermissionTo('Ver pestaña de Historias Clinicas'); 
+        
+        $roleGerente->givePermissionTo('Ver Lista de Fichas');
+        $roleGerente->givePermissionTo('Añadir una Nueva Ficha');
+        $roleGerente->givePermissionTo('Editar una Ficha');
+        $roleGerente->givePermissionTo('Eliminar una Ficha');
+        $roleGerente->givePermissionTo('Pagar una Ficha');
+        $roleGerente->givePermissionTo('Puede atender una ficha medica');
+        $roleGerente->givePermissionTo('Puede ver el historial clinico de un paciente');
         
 
-        //Roles Asignados al Administrador de la Empresa
+        //Consultas Realizadas
 
-        $roleAdministradorEmpresa->givePermissionTo('Visualizar pestaña de Gestion de Usuarios');
-        $roleAdministradorEmpresa->givePermissionTo('Visualizar pestaña de Gestion de Clientes'); 
-        $roleAdministradorEmpresa->givePermissionTo('Visualizar pestaña de Gestion de Proveedores'); 
-        $roleAdministradorEmpresa->givePermissionTo('Visualizar pestaña de Gestion de Personal'); 
-        $roleAdministradorEmpresa->givePermissionTo('Visualizar pestaña de Gestion de Roles'); 
-        $roleAdministradorEmpresa->givePermissionTo('Ver pestaña de Gestion de Insumos'); 
-        $roleAdministradorEmpresa->givePermissionTo('Ver pestaña de Categoria de Insumos'); 
-        $roleAdministradorEmpresa->givePermissionTo('Ver pestaña de Insumos'); 
-        $roleAdministradorEmpresa->givePermissionTo('Ver pestaña de Gestion de Inventarios'); 
-        $roleAdministradorEmpresa->givePermissionTo('Ver pestaña de Movimientos'); 
-        $roleAdministradorEmpresa->givePermissionTo('Ver pestaña de Gestion de Pedidos'); 
-        $roleAdministradorEmpresa->givePermissionTo('Ver pestaña de Mis Pedidos'); 
-        $roleAdministradorEmpresa->givePermissionTo('Ver pestaña de Cotizaciones'); 
-        
-        $roleAdministradorEmpresa->givePermissionTo('Ver Lista de Clientes');
-        $roleAdministradorEmpresa->givePermissionTo('Ver Lista de Proveedores');
-        $roleAdministradorEmpresa->givePermissionTo('Ver Lista de Personal');
-        $roleAdministradorEmpresa->givePermissionTo('Ver Lista de Roles');
-        $roleAdministradorEmpresa->givePermissionTo('Ver Lista de Permisos del Rol');
-
-        $roleAdministradorEmpresa->givePermissionTo('Añadir un Nuevo Cliente');
-        $roleAdministradorEmpresa->givePermissionTo('Añadir un Nuevo Proveedor');
-        $roleAdministradorEmpresa->givePermissionTo('Añadir un Nuevo Personal');
-        $roleAdministradorEmpresa->givePermissionTo('Añadir un Nuevo Rol y sus Permisos');
-
-        $roleAdministradorEmpresa->givePermissionTo('Editar Cliente');
-        $roleAdministradorEmpresa->givePermissionTo('Editar Proveedor');
-        $roleAdministradorEmpresa->givePermissionTo('Editar Personal');
-        $roleAdministradorEmpresa->givePermissionTo('Editar Rol y sus Permisos');
-
-        $roleAdministradorEmpresa->givePermissionTo('Eliminar Cliente');
-        $roleAdministradorEmpresa->givePermissionTo('Eliminar Proveedor');
-        $roleAdministradorEmpresa->givePermissionTo('Eliminar Personal');
-        $roleAdministradorEmpresa->givePermissionTo('Eliminar Rol y sus Permisos');
-
-        $roleAdministradorEmpresa->givePermissionTo('Ver Lista de Categorias de Insumos');
-        $roleAdministradorEmpresa->givePermissionTo('Ver Lista de Insumos');
-
-        $roleAdministradorEmpresa->givePermissionTo('Añadir una Nueva Categoria de Insumo');
-        $roleAdministradorEmpresa->givePermissionTo('Añadir un Nuevo Insumo');
-
-        $roleAdministradorEmpresa->givePermissionTo('Editar una Categoria de Insumo');
-        $roleAdministradorEmpresa->givePermissionTo('Editar un Insumo');
-
-        $roleAdministradorEmpresa->givePermissionTo('Ver Lista de movimientos');
-        $roleAdministradorEmpresa->givePermissionTo('Ver Informacion del movimiento');
-
-        $roleAdministradorEmpresa->givePermissionTo('Añadir un Nuevo Movimiento');
-
+        $roleGerente->givePermissionTo('Visualizar pestaña de Consultas Realizadas');
+        $roleGerente->givePermissionTo('Ver pestaña de Consultas Medicas Realizadas');
         
 
-        $roleAdministradorEmpresa->givePermissionTo('Ver Lista de Pedidos');
-        $roleAdministradorEmpresa->givePermissionTo('Ver Lista de Cotizaciones');
 
-        $roleAdministradorEmpresa->givePermissionTo('Añadir un Nuevo Pedido');
-        $roleAdministradorEmpresa->givePermissionTo('Añadir una Nueva Cotizacion');
+        //Gestion de Pagos
+        $roleGerente->givePermissionTo('Visualizar pestaña de Pagos');
 
-        $roleAdministradorEmpresa->givePermissionTo('Eliminar un Pedido');
+        $roleGerente->givePermissionTo('Ver pestaña de Pagos');
+        
 
-        $roleAdministradorEmpresa->givePermissionTo('Solicitar una cotizacion para un pedido');
+        // Roles Asignados al Administrador de la Empresa
 
-        $roleAdministradorEmpresa->givePermissionTo('Enviar una cotizacion de un pedido al cliente');
+        // $roleAdministradorEmpresa->givePermissionTo('Visualizar pestaña de Gestion de Usuarios');
+        // $roleAdministradorEmpresa->givePermissionTo('Visualizar pestaña de Gestion de Clientes'); 
+        // $roleAdministradorEmpresa->givePermissionTo('Visualizar pestaña de Gestion de Proveedores'); 
+        // $roleAdministradorEmpresa->givePermissionTo('Visualizar pestaña de Gestion de Personal'); 
+        // $roleAdministradorEmpresa->givePermissionTo('Visualizar pestaña de Gestion de Roles'); 
+        // $roleAdministradorEmpresa->givePermissionTo('Ver pestaña de Gestion de Insumos'); 
+        // $roleAdministradorEmpresa->givePermissionTo('Ver pestaña de Categoria de Insumos'); 
+        // $roleAdministradorEmpresa->givePermissionTo('Ver pestaña de Insumos'); 
+        // $roleAdministradorEmpresa->givePermissionTo('Ver pestaña de Gestion de Inventarios'); 
+        // $roleAdministradorEmpresa->givePermissionTo('Ver pestaña de Movimientos'); 
+        // $roleAdministradorEmpresa->givePermissionTo('Ver pestaña de Gestion de Pedidos'); 
+        // $roleAdministradorEmpresa->givePermissionTo('Ver pestaña de Mis Pedidos'); 
+        // $roleAdministradorEmpresa->givePermissionTo('Ver pestaña de Cotizaciones'); 
+        
+        // $roleAdministradorEmpresa->givePermissionTo('Ver Lista de Clientes');
+        // $roleAdministradorEmpresa->givePermissionTo('Ver Lista de Proveedores');
+        // $roleAdministradorEmpresa->givePermissionTo('Ver Lista de Personal');
+        // $roleAdministradorEmpresa->givePermissionTo('Ver Lista de Roles');
+        // $roleAdministradorEmpresa->givePermissionTo('Ver Lista de Permisos del Rol');
 
-        $roleAdministradorEmpresa->givePermissionTo('Ver cotizacion recibida');
+        // $roleAdministradorEmpresa->givePermissionTo('Añadir un Nuevo Cliente');
+        // $roleAdministradorEmpresa->givePermissionTo('Añadir un Nuevo Proveedor');
+        // $roleAdministradorEmpresa->givePermissionTo('Añadir un Nuevo Personal');
+        // $roleAdministradorEmpresa->givePermissionTo('Añadir un Nuevo Rol y sus Permisos');
+
+        // $roleAdministradorEmpresa->givePermissionTo('Editar Cliente');
+        // $roleAdministradorEmpresa->givePermissionTo('Editar Proveedor');
+        // $roleAdministradorEmpresa->givePermissionTo('Editar Personal');
+        // $roleAdministradorEmpresa->givePermissionTo('Editar Rol y sus Permisos');
+
+        // $roleAdministradorEmpresa->givePermissionTo('Eliminar Cliente');
+        // $roleAdministradorEmpresa->givePermissionTo('Eliminar Proveedor');
+        // $roleAdministradorEmpresa->givePermissionTo('Eliminar Personal');
+        // $roleAdministradorEmpresa->givePermissionTo('Eliminar Rol y sus Permisos');
+
+        // $roleAdministradorEmpresa->givePermissionTo('Ver Lista de Categorias de Insumos');
+        // $roleAdministradorEmpresa->givePermissionTo('Ver Lista de Insumos');
+
+        // $roleAdministradorEmpresa->givePermissionTo('Añadir una Nueva Categoria de Insumo');
+        // $roleAdministradorEmpresa->givePermissionTo('Añadir un Nuevo Insumo');
+
+        // $roleAdministradorEmpresa->givePermissionTo('Editar una Categoria de Insumo');
+        // $roleAdministradorEmpresa->givePermissionTo('Editar un Insumo');
+
+        // $roleAdministradorEmpresa->givePermissionTo('Ver Lista de movimientos');
+        // $roleAdministradorEmpresa->givePermissionTo('Ver Informacion del movimiento');
+
+        // $roleAdministradorEmpresa->givePermissionTo('Añadir un Nuevo Movimiento');
+
+        
+
+        // $roleAdministradorEmpresa->givePermissionTo('Ver Lista de Pedidos');
+        // $roleAdministradorEmpresa->givePermissionTo('Ver Lista de Cotizaciones');
+
+        // $roleAdministradorEmpresa->givePermissionTo('Añadir un Nuevo Pedido');
+        // $roleAdministradorEmpresa->givePermissionTo('Añadir una Nueva Cotizacion');
+
+        // $roleAdministradorEmpresa->givePermissionTo('Eliminar un Pedido');
+
+        // $roleAdministradorEmpresa->givePermissionTo('Solicitar una cotizacion para un pedido');
+
+        // $roleAdministradorEmpresa->givePermissionTo('Enviar una cotizacion de un pedido al cliente');
+
+        // $roleAdministradorEmpresa->givePermissionTo('Ver cotizacion recibida');
         
         
 
-        // Seeders de cosas utiles para probar--------------------
-
-        $categoriainsumo1 = CategoriaInsumo::create([
-            'nombre' => 'Tintas para Impresion',
-            'descripcion' => 'Descripcion de Tintas de Impresion',
-        ]);
-
-        $categoriainsumo2 = CategoriaInsumo::create([
-            'nombre' => 'Lonas',
-            'descripcion' => 'Descripcion de Lonas',
-        ]);
-
-        $insumo = Insumo::create([
-            'nombre' => 'Tinta Premium',
-            'marca' => 'Colorful',
-            'origen' => 'USA',
-            'categoria_insumo_id' => $categoriainsumo1->id,
-        ]);
-
-        $tipomovimiento1 = TipoMovimiento::create([
-            'nombre' => 'ingreso',
-            'descripcion' => 'Movimiento para denotar los ingresos de materiales',
-        ]);
-
-        $tipomovimiento2 = TipoMovimiento::create([
-            'nombre' => 'egreso',
-            'descripcion' => 'Movimiento para denotar los egresos de materiales',
-        ]);
+        // Seeders de cosas utiles para probar--------------------        
 
         //Especialidad
         $especialidad1 = Especialidad::create([
@@ -818,16 +628,6 @@ class PermissionsSeeder extends Seeder
         //Paginacion-------------------------------------------------
 
         Paginacion::create([            
-            'pagina' => 'cliente',
-            'contador' => 0,
-        ]);
-
-        Paginacion::create([            
-            'pagina' => 'proveedor',
-            'contador' => 0,
-        ]);
-
-        Paginacion::create([            
             'pagina' => 'personal',
             'contador' => 0,
         ]);
@@ -835,32 +635,7 @@ class PermissionsSeeder extends Seeder
         Paginacion::create([            
             'pagina' => 'roles',
             'contador' => 0,
-        ]);
-
-        Paginacion::create([            
-            'pagina' => 'categoriainsumo',
-            'contador' => 0,
-        ]);
-
-        Paginacion::create([            
-            'pagina' => 'insumo',
-            'contador' => 0,
-        ]);
-
-        Paginacion::create([            
-            'pagina' => 'movimiento',
-            'contador' => 0,
-        ]);
-
-        Paginacion::create([            
-            'pagina' => 'pedido',
-            'contador' => 0,
-        ]);
-
-        Paginacion::create([            
-            'pagina' => 'cotizacion',
-            'contador' => 0,
-        ]);
+        ]);        
 
         Paginacion::create([            
             'pagina' => 'pago',

@@ -32,13 +32,7 @@
             </button>
             @endcan
             <ul id="dropdown-example1" class="hidden py-2 space-y-2">                  
-                  
-                  {{-- @can('Visualizar pestaña de Gestion de Proveedores')
-                  <li>
-                     <a href="{{ route('formulario.proveedores')}}" class="flex items-center w-full p-2 text-gray-900 transition duration-75 rounded-lg pl-11 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700">Gestion de Proveedores</a>
-                  </li>
-                  @endcan
-                  @can('Visualizar pestaña de Gestion de Personal')
+                  {{-- @can('Visualizar pestaña de Gestion de Personal')
                   <li>
                      <a href="{{ route('formulario.personal')}}" class="flex items-center w-full p-2 text-gray-900 transition duration-75 rounded-lg pl-11 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700">Gestion de Personal</a>
                   </li>
@@ -67,37 +61,7 @@
             </ul>
          </li>
           <li>            
-          </li>
-          {{-- <li>
-            @can('Ver pestaña de Gestion de Inventarios')
-            <button type="button" class="flex items-center w-full p-2 text-base text-gray-900 transition duration-75 rounded-lg group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700" aria-controls="dropdown-example3" data-collapse-toggle="dropdown-example3">
-                  <svg class="flex-shrink-0 w-5 h-5 text-gray-500 transition duration-75 group-hover:text-gray-900 dark:text-gray-400 dark:group-hover:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 18 21">
-                     <path d="M6.143 0H1.857A1.857 1.857 0 0 0 0 1.857v4.286C0 7.169.831 8 1.857 8h4.286A1.857 1.857 0 0 0 8 6.143V1.857A1.857 1.857 0 0 0 6.143 0Zm10 0h-4.286A1.857 1.857 0 0 0 10 1.857v4.286C10 7.169 10.831 8 11.857 8h4.286A1.857 1.857 0 0 0 18 6.143V1.857A1.857 1.857 0 0 0 16.143 0Zm-10 10H1.857A1.857 1.857 0 0 0 0 11.857v4.286C0 17.169.831 18 1.857 18h4.286A1.857 1.857 0 0 0 8 16.143v-4.286A1.857 1.857 0 0 0 6.143 10Zm10 0h-4.286A1.857 1.857 0 0 0 10 11.857v4.286c0 1.026.831 1.857 1.857 1.857h4.286A1.857 1.857 0 0 0 18 16.143v-4.286A1.857 1.857 0 0 0 16.143 10Z"/>
-                  </svg>
-                  <span class="flex-1 ms-3 text-left rtl:text-right whitespace-nowrap">Gestion de Inventarios</span>
-                  <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
-                     <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 4 4 4-4"/>
-                  </svg>
-            </button>
-            @endcan
-            <ul id="dropdown-example3" class="hidden py-2 space-y-2">
-               @can('Ver pestaña de Categoria de Insumos') 
-               <li>
-                   <a href="{{ route('formulario.categoria.insumos')}}" class="flex items-center w-full p-2 text-gray-900 transition duration-75 rounded-lg pl-11 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700">Categoria de Insumo</a>
-                </li>
-                @endcan
-                @can('Ver pestaña de Insumos')
-                <li>
-                   <a href="{{ route('formulario.insumos')}}" class="flex items-center w-full p-2 text-gray-900 transition duration-75 rounded-lg pl-11 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700">Insumos</a>
-                </li>   
-                @endcan                
-                   @can('Ver pestaña de Movimientos')
-                   <li>
-                      <a href="{{ route('formulario.movimientos')}}" class="flex items-center w-full p-2 text-gray-900 transition duration-75 rounded-lg pl-11 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700">Movimientos</a>
-                   </li>   
-                   @endcan 
-            </ul>
-         </li>          --}}
+          </li>          
          <li>
             @can('Ver pestaña de Atencion Medica')
             <button type="button" class="flex items-center w-full p-2 text-base text-gray-900 transition duration-75 rounded-lg group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700" aria-controls="dropdown-example7" data-collapse-toggle="dropdown-example7">
@@ -153,20 +117,20 @@
                    <a href="{{ route('formulario.fichas')}}" class="flex items-center w-full p-2 text-gray-900 transition duration-75 rounded-lg pl-11 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700">Fichas</a>
                </li>
                @endcan                              
-               @can('Ver consulta medica') 
+               @can('Ver pestaña de Consulta Medica') 
                <li>
                    <a href="{{ route('formulario.consulta.medica')}}" class="flex items-center w-full p-2 text-gray-900 transition duration-75 rounded-lg pl-11 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700">Consulta Medica</a>
                 </li>
                @endcan
-               {{-- @can('Ver pestaña de Historias Clinicas de los Pacientes')  --}}
+               @can('Ver pestaña de Historias Clinicas') 
                <li>
                   <a href="{{ route('formulario.historias.clinicas')}}" class="flex items-center w-full p-2 text-gray-900 transition duration-75 rounded-lg pl-11 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700">Historias Clinicas</a>
               </li>
-              {{-- @endcan                                              --}}                                
+              @endcan                                                                             
             </ul>            
          </li>
          <li>
-            {{-- @can('Ver pestaña de Consultas Realizadas') --}}
+            @can('Visualizar pestaña de Consultas Realizadas')
             <button type="button" class="flex items-center w-full p-2 text-base text-gray-900 transition duration-75 rounded-lg group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700" aria-controls="dropdown-example9" data-collapse-toggle="dropdown-example9">
                   <svg class="flex-shrink-0 w-5 h-5 text-gray-500 transition duration-75 group-hover:text-gray-900 dark:text-gray-400 dark:group-hover:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 18 21">
                      <path d="M6.143 0H1.857A1.857 1.857 0 0 0 0 1.857v4.286C0 7.169.831 8 1.857 8h4.286A1.857 1.857 0 0 0 8 6.143V1.857A1.857 1.857 0 0 0 6.143 0Zm10 0h-4.286A1.857 1.857 0 0 0 10 1.857v4.286C10 7.169 10.831 8 11.857 8h4.286A1.857 1.857 0 0 0 18 6.143V1.857A1.857 1.857 0 0 0 16.143 0Zm-10 10H1.857A1.857 1.857 0 0 0 0 11.857v4.286C0 17.169.831 18 1.857 18h4.286A1.857 1.857 0 0 0 8 16.143v-4.286A1.857 1.857 0 0 0 6.143 10Zm10 0h-4.286A1.857 1.857 0 0 0 10 11.857v4.286c0 1.026.831 1.857 1.857 1.857h4.286A1.857 1.857 0 0 0 18 16.143v-4.286A1.857 1.857 0 0 0 16.143 10Z"/>
@@ -176,34 +140,34 @@
                      <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 4 4 4-4"/>
                   </svg>
             </button>
-            {{-- @endcan --}}
+            @endcan
             <ul id="dropdown-example9" class="hidden py-2 space-y-2">
-               {{-- @can('Ver pestaña de Consultas Medicas Realizadas')  --}}
+               @can('Ver pestaña de Consultas Medicas Realizadas') 
                <li>
                    <a href="{{ route('formulario.consultas.realizadas')}}" class="flex items-center w-full p-2 text-gray-900 transition duration-75 rounded-lg pl-11 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700">Consultas Medicas Realizadas</a>
                </li>
-               {{-- @endcan                                              --}}
+               @endcan                                             
             </ul>            
          </li>
          
          <li>
-            {{-- @can('Ver pestaña de Pagos') --}}
+            @can('Visualizar pestaña de Pagos')
             <button type="button" class="flex items-center w-full p-2 text-base text-gray-900 transition duration-75 rounded-lg group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700" aria-controls="dropdown-example11" data-collapse-toggle="dropdown-example11">
                   <svg class="flex-shrink-0 w-5 h-5 text-gray-500 transition duration-75 group-hover:text-gray-900 dark:text-gray-400 dark:group-hover:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 18 21">
                      <path d="M6.143 0H1.857A1.857 1.857 0 0 0 0 1.857v4.286C0 7.169.831 8 1.857 8h4.286A1.857 1.857 0 0 0 8 6.143V1.857A1.857 1.857 0 0 0 6.143 0Zm10 0h-4.286A1.857 1.857 0 0 0 10 1.857v4.286C10 7.169 10.831 8 11.857 8h4.286A1.857 1.857 0 0 0 18 6.143V1.857A1.857 1.857 0 0 0 16.143 0Zm-10 10H1.857A1.857 1.857 0 0 0 0 11.857v4.286C0 17.169.831 18 1.857 18h4.286A1.857 1.857 0 0 0 8 16.143v-4.286A1.857 1.857 0 0 0 6.143 10Zm10 0h-4.286A1.857 1.857 0 0 0 10 11.857v4.286c0 1.026.831 1.857 1.857 1.857h4.286A1.857 1.857 0 0 0 18 16.143v-4.286A1.857 1.857 0 0 0 16.143 10Z"/>
                   </svg>
-                  <span class="flex-1 ms-3 text-left rtl:text-right whitespace-nowrap">Pagos</span>
+                  <span class="flex-1 ms-3 text-left rtl:text-right whitespace-nowrap">Gestion de Pagos</span>
                   <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
                      <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 4 4 4-4"/>
                   </svg>
             </button>
-            {{-- @endcan --}}
+            @endcan
             <ul id="dropdown-example11" class="hidden py-2 space-y-2">
-               {{-- @can('Ver pestaña de Historias Clinicas de los Pacientes')  --}}
+               @can('Ver pestaña de Pagos') 
                <li>
                    <a href="{{ route('formulario.pagos')}}" class="flex items-center w-full p-2 text-gray-900 transition duration-75 rounded-lg pl-11 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700">Pagos</a>
                </li>
-               {{-- @endcan                                              --}}
+               @endcan                                             
             </ul>            
          </li>                          
        </ul>

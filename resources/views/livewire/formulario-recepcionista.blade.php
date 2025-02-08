@@ -111,28 +111,57 @@
         </form>
     </div>
     @endif
-    @endcan
+    @endcan  
+
+    
 
     @can('Ver Lista de Recepcionistas')
     <div class="bg-white dark:bg-gray-800 shadow rounded-lg p-6">
-        <ul class="list-disc list-inside space-y-2">
-            @foreach ($recepcionistas as $recepcionista)
-                <li class="font-semibold text-sm dark:text-gray-200 leading-tight mb-3 flex justify-between"
-                    wire:key="recepcionista--{{ $recepcionista->id }}">
-                    {{ $recepcionista->persona->nombre }}
-                    <div>
-                        @can('Editar Recepcionista')
-                        <x-button wire:click="edit({{ $recepcionista->id }})">Editar</x-button>
-                        @endcan
-                        @can('Eliminar Recepcionista')
-                        <x-danger-button wire:click="destroy({{ $recepcionista->id }})">Eliminar</x-danger-button>
-                        @endcan
-                    </div>
-                </li>
-            @endforeach
-        </ul>
+        <h2 class="text-xl font-semibold text-gray-800 dark:text-gray-200 mb-4 text-center">Lista de Recepcionistas</h2>
+
+        <table class="w-full border-collapse border border-gray-300 dark:border-gray-600">
+            <thead>
+                <tr class="bg-gray-200 dark:bg-gray-700">
+                    <th class="p-2 border border-gray-300 dark:border-gray-600 text-center">CI</th>
+                    <th class="p-2 border border-gray-300 dark:border-gray-600 text-center">Nombre</th>
+                    <th class="p-2 border border-gray-300 dark:border-gray-600 text-center">Apellido Paterno</th>
+                    <th class="p-2 border border-gray-300 dark:border-gray-600 text-center">Apellido Materno</th>
+                    <th class="p-2 border border-gray-300 dark:border-gray-600 text-center">Teléfono</th>
+                    <th class="p-2 border border-gray-300 dark:border-gray-600 text-center">Dirección</th>
+                    <th class="p-2 border border-gray-300 dark:border-gray-600 text-center">Turno de Trabajo</th>
+                    <th class="p-2 border border-gray-300 dark:border-gray-600 text-center">Fecha de Contratación</th>
+                    <th class="p-2 border border-gray-300 dark:border-gray-600 text-center">Acciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach ($recepcionistas as $recepcionista)
+                    <tr class="border border-gray-300 dark:border-gray-600">
+                        <td class="p-2 text-center align-middle">{{ $recepcionista->persona->ci }}</td>
+                        <td class="p-2 text-center align-middle">{{ $recepcionista->persona->nombre }}</td>
+                        <td class="p-2 text-center align-middle">{{ $recepcionista->persona->apellidopaterno }}</td>
+                        <td class="p-2 text-center align-middle">{{ $recepcionista->persona->apellidomaterno }}</td>
+                        <td class="p-2 text-center align-middle">{{ $recepcionista->persona->telefono }}</td>
+                        <td class="p-2 text-center align-middle">{{ $recepcionista->persona->direccion }}</td>
+                        <td class="p-2 text-center align-middle">{{ $recepcionista->turno_trabajo }}</td>
+                        <td class="p-2 text-center align-middle">{{ $recepcionista->fecha_contratacion }}</td>
+                        <td class="p-2 text-center align-middle">
+                            @can('Editar Recepcionista')
+                                <x-button wire:click="edit({{ $recepcionista->id }})">Editar</x-button>
+                            @endcan
+                            @can('Eliminar Recepcionista')
+                                <x-danger-button wire:click="destroy({{ $recepcionista->id }})">Eliminar</x-danger-button>
+                            @endcan
+                        </td>
+                    </tr>
+                @endforeach
+            </tbody>
+        </table>
     </div>
     @endcan
+
+
+
+
 
     <form wire:submit="update">
         <x-dialog-modal wire:model="open">

@@ -57,11 +57,11 @@ class CreateNewUser implements CreatesNewUsers
             
         ]);
 
-        // Crear y guardar el cliente asociado a la persona
-        $clienteCreated = Cliente::create([            
-            'nit' => $input['nit'],     
-            'person_id' => $personaCreated->id, // Asignar el id de la persona creada       
-        ]);
+        // // Crear y guardar el cliente asociado a la persona
+        // $clienteCreated = Cliente::create([            
+        //     'nit' => $input['nit'],     
+        //     'person_id' => $personaCreated->id, // Asignar el id de la persona creada       
+        // ]);
         
         // Crear y guardar el usuario asociado a la persona
         $userCreated = User::create([            

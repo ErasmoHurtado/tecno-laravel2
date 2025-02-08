@@ -23,39 +23,7 @@ class DatabaseSeeder extends Seeder
         //     'email' => 'test@example.com',
         // ]);
 
-        /*
-        $categoriainsumo = CategoriaInsumo::create([
-            'nombre' => 'tinta para impresoras',
-            'descripcion' => 'tintas para ser usadas por las impresoras'            
-        ]);
-
-        $categoriainsumo = CategoriaInsumo::create([
-            'nombre' => 'papel para impresoras',
-            'descripcion' => 'papel para ser usados por las impresoras'            
-        ]);
-
-        $insumo = Insumo::create([
-            'categoria_insumo_id' => 1,
-            'nombre' => 'Tinta XL',
-            'marca' => 'Cannon',
-            'descripcion' => 'tinta de marca cannon para la impresion de disenos',
-            'preciocompra' => 20.5,  
-            'precioventa' => 0,            
-            'porcentajeventa' => 0.20,
-            'cantidaddisponible' => 30            
-        ]);
-
-        $insumo = Insumo::create([
-            'categoria_insumo_id' => 2,
-            'nombre' => 'Papel PVC',
-            'marca' => 'Colorful',
-            'descripcion' => 'papel de la marca colorful la impresion de disenos',
-            'preciocompra' => 30.2,  
-            'precioventa' => 0,            
-            'porcentajeventa' => 0.25,
-            'cantidaddisponible' => 100            
-        ]);
-        */
+        
 
         
 

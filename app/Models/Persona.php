@@ -14,20 +14,20 @@ class Persona extends Model
         'ci', 'nombre', 'apellidopaterno', 'apellidomaterno', 'sexo', 'telefono', 'direccion'
     ];
 
-    public function cliente()
-    {
-        return $this->hasOne(Cliente::class);
-    }
+    // public function cliente()
+    // {
+    //     return $this->hasOne(Cliente::class);
+    // }
 
     public function user()
     {
         return $this->hasOne(User::class);
     }
 
-    public function proveedor()
-    {
-        return $this->hasOne(Proveedor::class);
-    }
+    // public function proveedor()
+    // {
+    //     return $this->hasOne(Proveedor::class);
+    // }
 
     public function personal()
     {

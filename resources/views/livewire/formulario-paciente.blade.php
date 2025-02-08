@@ -153,7 +153,7 @@
     @endif
     @endcan
 
-    @can('Ver Lista de Pacientes')
+    {{-- @can('Ver Lista de Pacientes')
     <div class="bg-white dark:bg-gray-800 shadow rounded-lg p-6">
         <ul class="list-disc list-inside space-y-2">
             @foreach ($pacientes as $paciente)
@@ -172,7 +172,52 @@
             @endforeach
         </ul>
     </div>
+    @endcan --}}
+
+    @can('Ver Lista de Pacientes')
+    <div class="bg-white dark:bg-gray-800 shadow rounded-lg p-6">
+        <h2 class="text-xl font-semibold text-gray-800 dark:text-gray-200 mb-4 text-center">Lista de Pacientes</h2>
+
+        <table class="w-full border-collapse border border-gray-300 dark:border-gray-600">
+            <thead>
+                <tr class="bg-gray-200 dark:bg-gray-700">
+                    <th class="p-2 border border-gray-300 dark:border-gray-600 text-center">CI</th>
+                    <th class="p-2 border border-gray-300 dark:border-gray-600 text-center">Nombre</th>
+                    <th class="p-2 border border-gray-300 dark:border-gray-600 text-center">Apellido Paterno</th>
+                    <th class="p-2 border border-gray-300 dark:border-gray-600 text-center">Apellido Materno</th>
+                    <th class="p-2 border border-gray-300 dark:border-gray-600 text-center">Teléfono</th>
+                    <th class="p-2 border border-gray-300 dark:border-gray-600 text-center">Dirección</th>
+                    <th class="p-2 border border-gray-300 dark:border-gray-600 text-center">Tipo de Sangre</th>
+                    <th class="p-2 border border-gray-300 dark:border-gray-600 text-center">Fecha de Registro</th>
+                    <th class="p-2 border border-gray-300 dark:border-gray-600 text-center">Acciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach ($pacientes as $paciente)
+                    <tr class="border border-gray-300 dark:border-gray-600">
+                        <td class="p-2 text-center align-middle">{{ $paciente->persona->ci }}</td>
+                        <td class="p-2 text-center align-middle">{{ $paciente->persona->nombre }}</td>
+                        <td class="p-2 text-center align-middle">{{ $paciente->persona->apellidopaterno }}</td>
+                        <td class="p-2 text-center align-middle">{{ $paciente->persona->apellidomaterno }}</td>
+                        <td class="p-2 text-center align-middle">{{ $paciente->persona->telefono }}</td>
+                        <td class="p-2 text-center align-middle">{{ $paciente->persona->direccion }}</td>
+                        <td class="p-2 text-center align-middle">{{ $paciente->tipo_sangre }}</td>
+                        <td class="p-2 text-center align-middle">{{ $paciente->fecha_registro }}</td>
+                        <td class="p-2 text-center align-middle">
+                            @can('Editar Paciente')
+                                <x-button wire:click="edit({{ $paciente->id }})">Editar</x-button>
+                            @endcan
+                            @can('Eliminar Paciente')
+                                <x-danger-button wire:click="destroy({{ $paciente->id }})">Eliminar</x-danger-button>
+                            @endcan
+                        </td>
+                    </tr>
+                @endforeach
+            </tbody>
+        </table>
+    </div>
     @endcan
+
 
     <form wire:submit="update">
         <x-dialog-modal wire:model="open">
