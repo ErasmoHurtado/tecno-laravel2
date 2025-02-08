@@ -16,7 +16,7 @@
                     <x-select class="w-full" wire:model="postCreate.id_medico">
                         <option value="" disabled>Seleccione un Médico</option>
                         @foreach ($medicos as $medico)
-                            <option value="{{ $medico->id }}">{{ $medico->persona->nombre }} {{ $medico->persona->apellido }}</option>
+                            <option value="{{ $medico->id }}">{{ $medico->persona->nombre }} {{ $medico->persona->apellidopaterno }} {{ $medico->persona->apellidomaterno }}</option>
                         @endforeach
                     </x-select>
                     <x-input-error for="postCreate.id_medico" />
@@ -60,30 +60,51 @@
             </form>
         </div>
     @endif
-    @endcan
+    @endcan    
 
-    @can('Ver Lista de Asignaciones de Especialidades Medicas')
+    @can('Ver Lista de Asignaciones de Especialidades Médicas')
     <div class="bg-white dark:bg-gray-800 shadow rounded-lg p-6">
-        <ul>
-            @foreach ($medicoEspecialidades as $medicoEspecialidad)
-                <li class="flex justify-between items-center p-2 border-b border-gray-200">
-                    <span>
-                        Médico: {{ $medicoEspecialidad->medico->persona->nombre }} {{ $medicoEspecialidad->medico->persona->apellido }}, 
-                        Especialidad: {{ $medicoEspecialidad->especialidad->nombre }}
-                    </span>
-                    <div>
-                        @can('Editar una asignacion de Especialidad Medica')
-                            <x-button wire:click="edit({{ $medicoEspecialidad->id }})">Editar</x-button>
-                        @endcan
-                        @can('Eliminar una asignacion de Especialidad Medica')
-                            <x-danger-button wire:click="destroy({{ $medicoEspecialidad->id }})">Eliminar</x-danger-button>
-                        @endcan
-                    </div>
-                </li>
-            @endforeach
-        </ul>
+        <h2 class="text-xl font-semibold text-gray-800 dark:text-gray-200 mb-4 text-center">Lista de Asignaciones de Especialidades Médicas</h2>
+
+        <table class="w-full border-collapse border border-gray-300 dark:border-gray-600">
+            <thead>
+                <tr class="bg-gray-200 dark:bg-gray-700">
+                    <th class="p-2 border border-gray-300 dark:border-gray-600 text-center">Número de Licencia</th>
+                    <th class="p-2 border border-gray-300 dark:border-gray-600 text-center">Nombre del Médico</th>
+                    <th class="p-2 border border-gray-300 dark:border-gray-600 text-center">Título Universitario</th>
+                    <th class="p-2 border border-gray-300 dark:border-gray-600 text-center">Título Especialidad</th>
+                    <th class="p-2 border border-gray-300 dark:border-gray-600 text-center">Origen Especialidad</th>
+                    <th class="p-2 border border-gray-300 dark:border-gray-600 text-center">Año Especialidad</th>
+                    <th class="p-2 border border-gray-300 dark:border-gray-600 text-center">Especialidad</th>
+                    <th class="p-2 border border-gray-300 dark:border-gray-600 text-center">Acciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach ($medicoEspecialidades as $medicoEspecialidad)
+                    <tr class="border border-gray-300 dark:border-gray-600">
+                        <td class="p-2 text-center align-middle">{{ $medicoEspecialidad->medico->numero_licencia }}</td>
+                        <td class="p-2 text-center align-middle">{{ $medicoEspecialidad->medico->persona->nombre }} {{ $medicoEspecialidad->medico->persona->apellidopaterno }} {{ $medicoEspecialidad->medico->persona->apellidomaterno }}</td>
+                        <td class="p-2 text-center align-middle">{{ $medicoEspecialidad->medico->titulo_universidad }}</td>
+                        <td class="p-2 text-center align-middle">{{ $medicoEspecialidad->titulo_especialidad }}</td>
+                        <td class="p-2 text-center align-middle">{{ $medicoEspecialidad->origen_especialidad }}</td>
+                        <td class="p-2 text-center align-middle">{{ $medicoEspecialidad->ano_especialidad }}</td>
+                        <td class="p-2 text-center align-middle">{{ $medicoEspecialidad->especialidad->nombre }}</td>
+                        <td class="p-2 text-center align-middle">
+                            @can('Editar una asignación de Especialidad Médica')
+                                <x-button wire:click="edit({{ $medicoEspecialidad->id }})">Editar</x-button>
+                            @endcan
+                            @can('Eliminar una asignación de Especialidad Médica')
+                                <x-danger-button wire:click="destroy({{ $medicoEspecialidad->id }})">Eliminar</x-danger-button>
+                            @endcan
+                        </td>
+                    </tr>
+                @endforeach
+            </tbody>
+        </table>
     </div>
     @endcan
+
+
 
     <form wire:submit="update">
         <x-dialog-modal wire:model="open">
@@ -97,7 +118,7 @@
                     </x-label>
                     <x-select class="w-full" wire:model="postEdit.id_medico">
                         @foreach ($medicos as $medico)
-                            <option value="{{ $medico->id }}">{{ $medico->persona->nombre }} {{ $medico->persona->apellido }}</option>
+                            <option value="{{ $medico->id }}">{{ $medico->persona->nombre }} {{ $medico->persona->apellidopaterno }} {{ $medico->persona->apellidomaterno }}</option>
                         @endforeach
                     </x-select>
                     <x-input-error for="postEdit.id_medico" />

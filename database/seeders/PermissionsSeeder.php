@@ -487,9 +487,8 @@ class PermissionsSeeder extends Seeder
 
         //Consultas Realizadas
 
-        $roleGerente->givePermissionTo('Visualizar pestaña de Consultas Realizadas');
-        $roleGerente->givePermissionTo('Ver pestaña de Consultas Medicas Realizadas');
-        
+        //$roleGerente->givePermissionTo('Visualizar pestaña de Consultas Realizadas');
+        //$roleGerente->givePermissionTo('Ver pestaña de Consultas Medicas Realizadas');        
 
 
         //Gestion de Pagos
@@ -565,7 +564,33 @@ class PermissionsSeeder extends Seeder
 
         // $roleAdministradorEmpresa->givePermissionTo('Ver cotizacion recibida');
         
+
+        //Seeder de permisos para el recepcionista
+
+        $roleRecepcionista->givePermissionTo('Visualizar pestaña de Gestion de Usuarios');       
+        $roleRecepcionista->givePermissionTo('Visualizar pestaña de Gestion de Pacientes'); 
+        $roleRecepcionista->givePermissionTo('Ver Lista de Pacientes');
+        $roleRecepcionista->givePermissionTo('Añadir un Nuevo Paciente');
+        $roleRecepcionista->givePermissionTo('Editar Paciente');
+
+        $roleRecepcionista->givePermissionTo('Visualizar pestaña de Consulta Medica');
+
+        $roleRecepcionista->givePermissionTo('Ver pestaña de Fichas');        
+        $roleRecepcionista->givePermissionTo('Ver pestaña de Historias Clinicas'); 
         
+        $roleRecepcionista->givePermissionTo('Ver Lista de Fichas');
+        $roleRecepcionista->givePermissionTo('Añadir una Nueva Ficha');
+        $roleRecepcionista->givePermissionTo('Editar una Ficha');
+        $roleRecepcionista->givePermissionTo('Eliminar una Ficha');
+        $roleRecepcionista->givePermissionTo('Pagar una Ficha');        
+        $roleRecepcionista->givePermissionTo('Puede ver el historial clinico de un paciente');
+
+
+        
+        //Seeder de permisos para el paciente
+
+        $rolePaciente->givePermissionTo('Visualizar pestaña de Consultas Realizadas');
+        $rolePaciente->givePermissionTo('Ver pestaña de Consultas Medicas Realizadas');        
 
         // Seeders de cosas utiles para probar--------------------        
 

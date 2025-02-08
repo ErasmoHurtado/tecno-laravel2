@@ -8,8 +8,13 @@
     @if ($mostrarFormulario)
     <div class="bg-white dark:bg-gray-800 shadow rounded-lg p-6 mb-8">
         <form wire:submit="save">
+            <div class="flex justify-center items-center h-32">
+                <label class="text-4xl font-extrabold text-gray-800 dark:text-gray-200">
+                    Formulario para crear un nuevo paciente
+                </label>
+            </div>
             <div class="mb-6">
-                <label class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight"> Formulario de Nuevo Paciente</label>
+                <label class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight"> Informacion Personal: </label>
             </div>
             <div class="mb-4">
                 <x-label class="font-semibold text-sm text-gray-800 dark:text-gray-200 leading-tight mb-3">
@@ -63,13 +68,16 @@
                     wire:model="postCreate.telefono" />
                 <x-input-error for="postCreate.telefono" />
             </div>
-            <div class="mb-4">
+            <div class="mb-8">
                 <x-label class="font-semibold text-sm text-gray-800 dark:text-gray-200 leading-tight mb-3">
                     Dirección
                 </x-label>
                 <x-input class="w-full font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight"
                     wire:model="postCreate.direccion" />
                 <x-input-error for="postCreate.direccion" />
+            </div>
+            <div class="mb-6">
+                <label class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight"> Informacion de Paciente: </label>
             </div>
             <div class="mb-4">
                 <x-label class="font-semibold text-sm text-gray-800 dark:text-gray-200 leading-tight mb-3">
@@ -79,7 +87,7 @@
                     type="date" wire:model="postCreate.fecha_registro" />
                 <x-input-error for="postCreate.fecha_registro" />
             </div>
-            <div class="mb-4">
+            <div class="mb-8">
                 <x-label class="font-semibold text-sm text-gray-800 dark:text-gray-200 leading-tight mb-3">
                     Tipo de Sangre
                 </x-label>
@@ -87,22 +95,9 @@
                     wire:model="postCreate.tipo_sangre" />
                 <x-input-error for="postCreate.tipo_sangre" />
             </div>
-            <div class="mb-4">
-                <x-label class="font-semibold text-sm text-gray-800 dark:text-gray-200 leading-tight mb-3">
-                    Correo Electrónico
-                </x-label>
-                <x-input class="w-full font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight"
-                    wire:model="postCreate.email" />
-                <x-input-error for="postCreate.email" />
-            </div>
-            <div class="mb-4">
-                <x-label class="font-semibold text-sm text-gray-800 dark:text-gray-200 leading-tight mb-3">
-                    Contraseña
-                </x-label>
-                <x-input class="w-full font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight"
-                    type="password" wire:model="postCreate.password" />
-                <x-input-error for="postCreate.password" />
-            </div>
+            <div class="mb-6">
+                <label class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight"> Informacion para el Historial Clinico: </label>
+            </div>            
             <div class="mb-4">
                 <x-label class="font-semibold text-sm text-gray-800 dark:text-gray-200 leading-tight mb-3">
                     Diagnóstico Principal
@@ -135,13 +130,32 @@
                     wire:model="postCreate.antecedentes_personales" />
                 <x-input-error for="postCreate.antecedentes_personales" />
             </div>
-            <div class="mb-4">
+            <div class="mb-8">
                 <x-label class="font-semibold text-sm text-gray-800 dark:text-gray-200 leading-tight mb-3">
                     Tratamientos Crónicos
                 </x-label>
                 <x-input class="w-full font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight"
                     wire:model="postCreate.tratamientos_cronicos" />
                 <x-input-error for="postCreate.tratamientos_cronicos" />
+            </div>
+            <div class="mb-6">
+                <label class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight"> Login de Acceso al sistema: </label>
+            </div>
+            <div class="mb-4">
+                <x-label class="font-semibold text-sm text-gray-800 dark:text-gray-200 leading-tight mb-3">
+                    Correo Electrónico
+                </x-label>
+                <x-input class="w-full font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight"
+                    wire:model="postCreate.email" />
+                <x-input-error for="postCreate.email" />
+            </div>
+            <div class="mb-4">
+                <x-label class="font-semibold text-sm text-gray-800 dark:text-gray-200 leading-tight mb-3">
+                    Contraseña
+                </x-label>
+                <x-input class="w-full font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight"
+                    type="password" wire:model="postCreate.password" />
+                <x-input-error for="postCreate.password" />
             </div>
             <div class="flex justify-end">
                 <x-button>

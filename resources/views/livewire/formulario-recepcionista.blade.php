@@ -8,8 +8,13 @@
     @if ($mostrarFormulario)
     <div class="bg-white dark:bg-gray-800 shadow rounded-lg p-6 mb-8">
         <form wire:submit="save">
+            <div class="flex justify-center items-center h-32">
+                <label class="text-4xl font-extrabold text-gray-800 dark:text-gray-200">
+                    Formulario para crear un nuevo/a recepcionista
+                </label>
+            </div>
             <div class="mb-6">
-                <label class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight"> Formulario de Nuevo Recepcionista</label>
+                <label class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight"> Informacion Personal: </label>
             </div>
             <div class="mb-4">
                 <x-label class="font-semibold text-sm text-gray-800 dark:text-gray-200 leading-tight mb-3">
@@ -71,6 +76,9 @@
                     wire:model="postCreate.direccion" />
                 <x-input-error for="postCreate.direccion" />
             </div>
+            <div class="mb-6">
+                <label class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight"> Informacion de la Recepcionista: </label>
+            </div>
             <div class="mb-4">
                 <x-label class="font-semibold text-sm text-gray-800 dark:text-gray-200 leading-tight mb-3">
                     Turno de Trabajo
@@ -78,8 +86,8 @@
                 <x-input class="w-full font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight"
                     wire:model="postCreate.turno_trabajo" />
                 <x-input-error for="postCreate.turno_trabajo" />
-            </div>
-            <div class="mb-4">
+            </div>            
+            <div class="mb-8">
                 <x-label class="font-semibold text-sm text-gray-800 dark:text-gray-200 leading-tight mb-3">
                     Fecha de Contratación
                 </x-label>
@@ -87,6 +95,9 @@
                     type="date" wire:model="postCreate.fecha_contratacion" />
                 <x-input-error for="postCreate.fecha_contratacion" />
             </div>
+            <div class="mb-6">
+                <label class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight"> Login de Acceso al sistema: </label>
+            </div>            
             <div class="mb-4">
                 <x-label class="font-semibold text-sm text-gray-800 dark:text-gray-200 leading-tight mb-3">
                     Correo Electrónico

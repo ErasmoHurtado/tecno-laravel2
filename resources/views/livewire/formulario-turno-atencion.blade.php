@@ -65,7 +65,7 @@
                     <x-select class="w-full" wire:model="postCreate.medico_especialidad_id">
                         <option value="" disabled>Seleccione una Especialidad Médica</option>
                         @foreach ($medicoEspecialidades as $medicoEspecialidad)
-                            <option value="{{ $medicoEspecialidad->id }}">{{ $medicoEspecialidad->medico->persona->nombre }} -- {{ $medicoEspecialidad->titulo_especialidad }}</option>
+                            <option value="{{ $medicoEspecialidad->id }}">{{ $medicoEspecialidad->medico->persona->nombre }} {{ $medicoEspecialidad->medico->persona->apellidopaterno }} {{ $medicoEspecialidad->medico->persona->apellidomaterno }} -- {{ $medicoEspecialidad->especialidad->nombre }}</option>
                         @endforeach
                     </x-select>
                     <x-input-error for="postCreate.medico_especialidad_id" />
@@ -77,7 +77,7 @@
                     <x-select class="w-full" wire:model="postCreate.sala_id">
                         <option value="" disabled>Seleccione una Sala</option>
                         @foreach ($salas as $sala)
-                            <option value="{{ $sala->id }}">Sala {{ $sala->codigo }}</option>
+                            <option value="{{ $sala->id }}">Sala:  {{ $sala->codigo }} -- Tipo: {{ $sala->tipo }}</option>
                         @endforeach
                     </x-select>
                     <x-input-error for="postCreate.sala_id" />
@@ -90,7 +90,7 @@
     @endif
     @endcan
 
-    @can('Ver Lista de Turnos de Atencion')
+    {{-- @can('Ver Lista de Turnos de Atencion')
     <div class="bg-white dark:bg-gray-800 shadow rounded-lg p-6">
         <ul>
             @foreach ($turnosAtencion as $turnoAtencion)
@@ -117,7 +117,59 @@
             @endforeach
         </ul>
     </div>
+    @endcan --}}
+
+    @can('Ver Lista de Turnos de Atención')
+    <div class="bg-white dark:bg-gray-800 shadow rounded-lg p-6">
+        <h2 class="text-xl font-semibold text-gray-800 dark:text-gray-200 mb-4 text-center">Lista de Turnos de Atención</h2>
+
+        <div class="overflow-x-auto">
+            <table class="w-full border-collapse border border-gray-300 dark:border-gray-600">
+                <thead>
+                    <tr class="bg-gray-200 dark:bg-gray-700">
+                        <th class="p-2 border border-gray-300 dark:border-gray-600 text-center">Médico</th>
+                        <th class="p-2 border border-gray-300 dark:border-gray-600 text-center">Especialidad</th>
+                        <th class="p-2 border border-gray-300 dark:border-gray-600 text-center">Horario</th>
+                        <th class="p-2 border border-gray-300 dark:border-gray-600 text-center">Hora Inicio</th>
+                        <th class="p-2 border border-gray-300 dark:border-gray-600 text-center">Hora Fin</th>
+                        <th class="p-2 border border-gray-300 dark:border-gray-600 text-center">Días de Servicio</th>
+                        <th class="p-2 border border-gray-300 dark:border-gray-600 text-center">Cantidad de Fichas</th>
+                        <th class="p-2 border border-gray-300 dark:border-gray-600 text-center">Precio</th>
+                        <th class="p-2 border border-gray-300 dark:border-gray-600 text-center">Acciones</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach ($turnosAtencion as $turnoAtencion)
+                        <tr class="border border-gray-300 dark:border-gray-600">
+                            <td class="p-2 text-center align-middle">
+                                {{ $turnoAtencion->medicoEspecialidad->medico->persona->nombre }}
+                                {{ $turnoAtencion->medicoEspecialidad->medico->persona->apellidoPaterno }}
+                                {{ $turnoAtencion->medicoEspecialidad->medico->persona->apellidoMaterno }}
+                            </td>
+                            <td class="p-2 text-center align-middle">{{ $turnoAtencion->medicoEspecialidad->especialidad->nombre }}</td>
+                            <td class="p-2 text-center align-middle">{{ $turnoAtencion->horario }}</td>
+                            <td class="p-2 text-center align-middle">{{ $turnoAtencion->hora_inicio }}</td>
+                            <td class="p-2 text-center align-middle">{{ $turnoAtencion->hora_fin }}</td>
+                            <td class="p-2 text-center align-middle">{{ implode(', ', $turnoAtencion->dias_servicio) }}</td>
+                            <td class="p-2 text-center align-middle">{{ $turnoAtencion->cantidad_fichas }}</td>
+                            <td class="p-2 text-center align-middle">{{ $turnoAtencion->precio }}</td>
+                            <td class="p-2 text-center align-middle">
+                                @can('Editar un Turno de Atención')
+                                    <x-button wire:click="edit({{ $turnoAtencion->id }})">Editar</x-button>
+                                @endcan
+                                @can('Eliminar un Turno de Atención')
+                                    <x-danger-button wire:click="destroy({{ $turnoAtencion->id }})">Eliminar</x-danger-button>
+                                @endcan
+                            </td>
+                        </tr>
+                    @endforeach
+                </tbody>
+            </table>
+        </div>
+    </div>
     @endcan
+
+
 
     <form wire:submit="update">
         <x-dialog-modal wire:model="open">

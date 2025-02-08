@@ -265,7 +265,8 @@ class FormularioConsulta extends Component
 
         // Resetear formulario y cerrar modal
         $this->reset(['postCreate', 'ficha_id', 'mostrarFormulario']);
-        $this->consultas = Consulta::all();
+        //$this->consultas = Consulta::all();
+        $this->fichas = Ficha::all();
         $this->mostrarModalSucessCreacion = true;
     }
 

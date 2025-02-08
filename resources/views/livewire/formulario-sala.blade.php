@@ -7,7 +7,15 @@
     </div>
     @if ($mostrarFormulario)
     <div class="bg-white dark:bg-gray-800 shadow rounded-lg p-6 mb-8">
-        <form wire:submit="save">            
+        <form wire:submit="save">
+            <div class="flex justify-center items-center h-32">
+                <label class="text-4xl font-extrabold text-gray-800 dark:text-gray-200">
+                    Formulario para crear una sala
+                </label>
+            </div>
+            <div class="mb-6">
+                <label class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight"> Informacion de la sala: </label>
+            </div>            
             <div class="mb-4">
                 <x-label class="font-semibold text-sm text-gray-800 dark:text-gray-200 leading-tight mb-3">
                     Código
